@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "start": "react-scripts start"
+  },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-scripts": "^5.0.1"
   }
 }
