@@ -83,6 +83,7 @@ app_name/
 | main | 安定したバージョンを保持。完成した機能や修正をマージ。 | main |
 | feature/xxx | 新しい機能の開発に使用。xxxは機能の名前を示す。 | feature/add-feature |
 | bugfix/xxx | バグ修正に使用。xxxは修正内容を示す。 | bugfix/fix-issue |
+| refactor/xxx | コードのリファクタリングに使用。xxxはリファクタリングの内容を示す。 | refactor/improve-component-structure |
 
 ## コミットメッセージのルール
 以下のタグを使用する
