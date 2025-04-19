@@ -1,0 +1,8 @@
+# ディレクトリのメタデータ
+.DS_Store
+
+# 外部ライブラリ
+node_modules/
+
+# nodeenv 環境を除外
+versions/
