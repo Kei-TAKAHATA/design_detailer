@@ -1,6 +1,7 @@
 import React from 'react';
+import { DesignFormProps } from './types';
 
-const DesignForm: React.FC = () => {
+export const DesignForm: React.FC<DesignFormProps> = ({ onSubmit }) => {
   return (
     <div>
       <textarea placeholder="設計の概要を入力してください"></textarea>
@@ -8,5 +9,3 @@ const DesignForm: React.FC = () => {
     </div>
   );
 };
-
-export default DesignForm;
