@@ -94,3 +94,26 @@ app_name/
 | docs | ドキュメントの変更 | [docs]READMEに使用方法を追加 |
 | refactor | コードのリファクタリング（動作に影響しない） | [refactor]モデルの構造を整理 |
 | chore | その他の変更（パッケージ更新、ビルドプロセスの変更など） | [chore]依存パッケージを更新 |
+
+## コンポーネント設計
+default exportは基本使用しない（import側で自由に名前をつけることができるため）
+
+`Button`というコンポーネントの場合以下のような構成で設計する
+```
+Button/
+├── Button.tsx
+├── Button.module.css ※ スタイル関連ファイルで他には styles.js, styles.scss など
+├── Button.stories.tsx
+├── hooks.ts ※ ロジック
+├── index.ts ※ Buttonをexportするためだけのファイル
+|── components/
+│   ├── SubComponentA/
+│   ├── SubComponentB/
+```
+
+## 環境構築
+`conda`内に`nodeenv`で`node`環境を入れる。
+
+```
+nodenv install 20.18.0
+```
