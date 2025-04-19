@@ -101,11 +101,12 @@ default exportは基本使用しない（import側で自由に名前をつける
 `Button`というコンポーネントの場合以下のような構成で設計する
 ```
 Button/
-├── Button.tsx
-├── Button.module.css ※ スタイル関連ファイルで他には styles.js, styles.scss など
-├── Button.stories.tsx
-├── hooks.ts ※ ロジック
-├── index.ts ※ Buttonをexportするためだけのファイル
+├── index.tsx  # Buttonをexportするためだけのファイル
+├── types.ts  # Buttonコンポーネントに関連する型定義を含むファイル
+├── styles.ts  # Buttonコンポーネントのスタイルを定義するファイル
+├── Button.tsx  # 見た目に関する部分
+├── Button.stories.tsx  # Storybookで表示するためのファイル
+├── hooks.ts  # ロジックに関する部分
 |── components/
 │   ├── SubComponentA/
 │   ├── SubComponentB/
