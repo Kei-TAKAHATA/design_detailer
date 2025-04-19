@@ -1,17 +1,16 @@
 import React from 'react';
-import DesignForm from './components/DesignForm';
-import MermaidPreview from './components/MermaidPreview';
-import OutputDisplay from './components/OutputDisplay';
+import { DesignForm } from './components/DesignForm';
+import { MermaidPreview } from './components/MermaidPreview';
+import { OutputDisplay } from './components/OutputDisplay';
 
-const App: React.FC = () => {
+
+export const App: React.FC = () => {
   return (
     <div>
-      <h1>Design Detailer App</h1>
-      <DesignForm />
-      <MermaidPreview />
-      <OutputDisplay />
+      <h1>設計作成ツール</h1>
+      <DesignForm onSubmit={() => {}} />
+      <MermaidPreview mermaidCode={''} />
+      <OutputDisplay designSummary={''} designDiagram={''} />
     </div>
   );
 };
-
-export default App;
