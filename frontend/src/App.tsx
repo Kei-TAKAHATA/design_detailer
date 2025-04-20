@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import mermaid from 'mermaid';
 import { DesignForm } from './components/DesignForm';
+import { MermaidEditor } from './components/MermaidEditor';
 import { MermaidPreview } from './components/MermaidPreview';
 import { OutputDisplay } from './components/OutputDisplay';
 
@@ -57,6 +58,7 @@ export const App: React.FC = () => {
     <div>
       <h2>設計を作成するツールだよー</h2>
       <DesignForm onSubmit={handleConvertButtonClick} value={designFormText} onChange={handleDesignFormChange} />
+      <MermaidEditor code={mermaidCode} onChange={setMermaidCode} />
       <MermaidPreview mermaidCode={mermaidCode} />
       {/* <OutputDisplay designSummary={''} designDiagram={''} /> */}
     </div>
