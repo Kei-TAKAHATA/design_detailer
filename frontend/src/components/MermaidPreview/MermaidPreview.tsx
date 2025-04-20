@@ -1,6 +1,7 @@
 import React from 'react';
+import { MermaidPreviewProps } from './types';
 
-const MermaidPreview: React.FC = () => {
+export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) => {
   return (
     <div>
       <h2>Mermaid Diagram Preview</h2>
@@ -8,5 +9,3 @@ const MermaidPreview: React.FC = () => {
     </div>
   );
 };
-
-export default MermaidPreview;
