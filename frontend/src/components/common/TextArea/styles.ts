@@ -1,0 +1,11 @@
+import styled from 'styled-components';
+import { TextAreaProps } from './types';
+
+export const StyledTextArea = styled.textarea<TextAreaProps>`
+  width: 100%;
+  min-height: ${({ $minRows = 5 }) => `calc(1.5em * ${$minRows})`}; /* デフォルトは5行 */
+  max-height: ${({ $maxRows = 20 }) => `calc(1.5em * ${$maxRows})`}; /* デフォルトは20行 */
+  line-height: 1.5em;
+  margin-bottom: 20px;
+  resize: vertical;
+`;
