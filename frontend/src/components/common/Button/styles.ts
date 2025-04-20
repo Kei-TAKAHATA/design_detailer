@@ -12,7 +12,7 @@ import styled from 'styled-components';
 //   }
 // `;
 
-export const ButtonContainer = styled.button`
+export const StyledButton = styled.button`
   background-color: #007bff;
   color: white;
   padding: 0.5rem 1rem;

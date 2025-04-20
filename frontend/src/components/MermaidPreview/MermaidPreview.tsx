@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
 import { MermaidPreviewProps } from './types';
-
+import { StyledMermaidPreview } from './styles';
 export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
 
@@ -21,8 +21,8 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
   }, [mermaidCode]);
 
   return (
-    <div>
+    <StyledMermaidPreview>
       <div ref={mermaidRef} className="mermaid"></div>
-    </div>
+    </StyledMermaidPreview>
   );
 };
