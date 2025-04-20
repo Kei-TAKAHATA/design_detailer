@@ -49,8 +49,6 @@ export const App: React.FC = () => {
 
     // const generatedMermaidCode = convertDesignFormTextToMermaidCode(designFormText);
     setMermaidCode(generatedMermaidCode);
-    // Mermaid図の描画
-    // mermaid.init();
   };
 
 
