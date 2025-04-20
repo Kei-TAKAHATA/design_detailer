@@ -83,6 +83,7 @@ app_name/
 | main | 安定したバージョンを保持。完成した機能や修正をマージ。 | main |
 | feature/xxx | 新しい機能の開発に使用。xxxは機能の名前を示す。 | feature/add-feature |
 | bugfix/xxx | バグ修正に使用。xxxは修正内容を示す。 | bugfix/fix-issue |
+| refactor/xxx | コードのリファクタリングに使用。xxxはリファクタリングの内容を示す。 | refactor/improve-component-structure |
 
 ## コミットメッセージのルール
 以下のタグを使用する
@@ -101,11 +102,12 @@ default exportは基本使用しない（import側で自由に名前をつける
 `Button`というコンポーネントの場合以下のような構成で設計する
 ```
 Button/
-├── Button.tsx
-├── Button.module.css ※ スタイル関連ファイルで他には styles.js, styles.scss など
-├── Button.stories.tsx
-├── hooks.ts ※ ロジック
-├── index.ts ※ Buttonをexportするためだけのファイル
+├── index.tsx  # Buttonをexportするためだけのファイル
+├── types.ts  # Buttonコンポーネントに関連する型定義を含むファイル
+├── styles.ts  # Buttonコンポーネントのスタイルを定義するファイル
+├── Button.tsx  # 見た目に関する部分
+├── Button.stories.tsx  # Storybookで表示するためのファイル
+├── hooks.ts  # ロジックに関する部分
 |── components/
 │   ├── SubComponentA/
 │   ├── SubComponentB/
