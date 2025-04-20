@@ -7,7 +7,7 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
 
   useEffect(() => {
     const renderMermaid = async () => {
-      if (mermaidRef.current) {
+      if (mermaidRef.current &&  mermaidCode.trim() !== '') {
         // mermaidの初期化
         mermaid.initialize({ startOnLoad: false });
         // ユニークなIDを生成
@@ -29,14 +29,14 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
 
   return (
     <div>
-      <h2>Mermaid Diagram Preview</h2>
+      {/* <h2>Mermaid Diagram Preview</h2>
       <textarea
         value={mermaidCode}
         readOnly
         rows={10}
         cols={50}
         style={{ width: '100%', marginBottom: '20px' }}
-      />
+      /> */}
       <div ref={mermaidRef} className="mermaid"></div>
     </div>
   );
