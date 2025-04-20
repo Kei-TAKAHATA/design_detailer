@@ -5,9 +5,10 @@ import { OutputDisplay } from './components/OutputDisplay';
 
 
 export const App: React.FC = () => {
+
   return (
     <div>
-      <h1>設計作成ツール</h1>
+      <h2>設計を作成するツールだよー</h2>
       <DesignForm onSubmit={() => {}} />
       <MermaidPreview mermaidCode={''} />
       <OutputDisplay designSummary={''} designDiagram={''} />
