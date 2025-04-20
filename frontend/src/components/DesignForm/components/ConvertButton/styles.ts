@@ -12,10 +12,14 @@ import styled from 'styled-components';
 //   }
 // `;
 
-export const ConvertButtonContainer = styled.button`
+export const StyledConvertButton = styled.button`
+  height: 100%; /* 親要素の高さに合わせる */
+  width: 20%;
+  padding: 0.5rem 4rem; /* ボタンの内側の余白を設定 */
+  margin-left: auto; /* 右揃えにするための設定 */
+
   background-color: #007bff;
   color: white;
-  padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
