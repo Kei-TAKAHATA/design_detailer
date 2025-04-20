@@ -58,7 +58,7 @@ export const App: React.FC = () => {
       <h2>設計を作成するツールだよー</h2>
       <DesignForm onSubmit={handleConvertButtonClick} value={designFormText} onChange={handleDesignFormChange} />
       <MermaidPreview mermaidCode={mermaidCode} />
-      <OutputDisplay designSummary={''} designDiagram={''} />
+      {/* <OutputDisplay designSummary={''} designDiagram={''} /> */}
     </div>
   );
 };
