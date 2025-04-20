@@ -51,7 +51,6 @@ export const App: React.FC = () => {
     setMermaidCode(generatedMermaidCode);
   };
 
-
   return (
     <div>
       <h2>設計を作成するツールだよー</h2>
