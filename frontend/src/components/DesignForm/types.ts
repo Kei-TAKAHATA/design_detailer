@@ -1,3 +1,5 @@
 export type DesignFormProps = {
-  onSubmit: (design: string) => void;
+  onSubmit: () => void;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
