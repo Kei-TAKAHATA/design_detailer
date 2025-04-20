@@ -12,15 +12,8 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
         mermaid.initialize({ startOnLoad: false });
         // ユニークなIDを生成
         const uniqueId = `mermaid-diagram-${Math.random().toString().replace('.', '')}`;
-        // const uniqueId = `mermaid-diagram-${Math.random()}`;
         const { svg } = await mermaid.render(uniqueId, mermaidCode);
         mermaidRef.current.innerHTML = svg;
-        // mermaid.render(uniqueId, mermaidCode, (svgCode: string, bindFunctions: (element: Element) => void) => {
-        //   if (mermaidRef.current) {
-        //     mermaidRef.current.innerHTML = svgCode;
-        //     bindFunctions(mermaidRef.current); // 必要に応じてバインド関数を呼び出す
-        //   }
-        // });
       }
     };
 
@@ -29,14 +22,6 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
 
   return (
     <div>
-      {/* <h2>Mermaid Diagram Preview</h2>
-      <textarea
-        value={mermaidCode}
-        readOnly
-        rows={10}
-        cols={50}
-        style={{ width: '100%', marginBottom: '20px' }}
-      /> */}
       <div ref={mermaidRef} className="mermaid"></div>
     </div>
   );
