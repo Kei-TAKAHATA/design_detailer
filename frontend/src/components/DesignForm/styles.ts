@@ -10,6 +10,8 @@ export const StyledDesignForm = styled.div<{ height?: string }>`
   max-width: 1000px; /* 最大幅を設定 */
   writing-mode: horizontal-tb; /* 横書きに設定 */
   text-orientation: mixed; /* 通常の文字方向に設定 */
-  margin: 0 auto;
+  // margin: 0 auto;
   margin-bottom: 2%; /* 親要素の幅に対する割合で設定 */
+  margin-left: 0;  /* 左側のマージンを0に設定 */
+  margin-right: 0; /* 右側のマージンを0に設定 */
 `;
