@@ -4,9 +4,9 @@ import { DesignForm } from './components/DesignForm';
 import { DesignDetailEditor } from './components/DesignDetailEditor';
 import { MermaidEditor } from './components/MermaidEditor';
 import { MermaidPreview } from './components/MermaidPreview';
-// import { OutputDisplay } from './components/OutputDisplay';
 import { generateDesignDetailText } from './utils/generateDesignDetailText';
 import { convertDesignDetailTextToMermaidCode } from './utils/convertDesignDetailTextToMermaidCode';
+
 export const App: React.FC = () => {
   // 概要の入力欄のテキスト管理
   const [designFormText, setDesignFormText] = useState('');
@@ -77,7 +77,6 @@ export const App: React.FC = () => {
       <DesignDetailEditor onSubmit={handleDesignDetailEditorSubmit} designDetailText={designDetailText} onChange={handleDesignDetailEditorChange}/>
       <MermaidEditor code={mermaidCode} onChange={setMermaidCode} />
       <MermaidPreview mermaidCode={mermaidCode} />
-      {/* <OutputDisplay designSummary={''} designDiagram={''} /> */}
     </div>
   );
 };
