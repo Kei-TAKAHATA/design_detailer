@@ -1,25 +1,37 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 import { MermaidPreviewProps } from './types';
 import { StyledMermaidPreview } from './styles';
 import { Button } from '../common/Button';
+import debounce from 'lodash.debounce';
 
 export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const renderMermaid = async () => {
-      if (mermaidRef.current &&  mermaidCode.trim() !== '') {
-        // mermaidの初期化
-        mermaid.initialize({ startOnLoad: false });
-        // ユニークなIDを生成
-        const uniqueId = `mermaid-diagram-${Math.random().toString().replace('.', '')}`;
-        const { svg } = await mermaid.render(uniqueId, mermaidCode);
-        mermaidRef.current.innerHTML = svg;
+    const renderMermaid = debounce(async () => {
+      if (mermaidRef.current && mermaidCode.trim() !== '') {
+        try {
+          // mermaidの初期化
+          mermaid.initialize({ startOnLoad: false });
+          // ユニークなIDを生成
+          const uniqueId = `mermaid-diagram-${Math.random().toString().replace('.', '')}`;
+          const { svg } = await mermaid.render(uniqueId, mermaidCode);
+          mermaidRef.current.innerHTML = svg;
+          setError(null); // エラーがない場合はエラーをクリア
+        } catch (error) {
+          console.error('Mermaidのレンダリング中にエラーが発生しました: ', error);
+          setError('Mermaidコードにエラーがあります。形式を確認してください。');
+        }
       }
-    };
+    }, 500); // 500ミリ秒の遅延
 
     renderMermaid();
+
+    return () => {
+      renderMermaid.cancel();
+    };
   }, [mermaidCode]);
 
   // const copyToClipboard = () => {
@@ -109,6 +121,7 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
   return (
     <StyledMermaidPreview>
       <div ref={mermaidRef} className="mermaid"></div>
+      {error && <div className="error-message">{error}</div>}
       <Button onClick={copyToClipboard}>図をコピー</Button>
     </StyledMermaidPreview>
   );
