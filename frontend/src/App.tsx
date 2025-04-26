@@ -14,8 +14,6 @@ export const App: React.FC = () => {
   const [designDetailText, setDesignDetailText] = useState('');
   // Mermaidのコード
   const [mermaidCode, setMermaidCode] = useState('');
-  // 出力欄のテキスト管理
-  // const [outputDisplayText, setOutputDisplayText] = useState('');
 
   // 概要の入力欄のテキスト変更時の処理
   const handleDesignFormChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
