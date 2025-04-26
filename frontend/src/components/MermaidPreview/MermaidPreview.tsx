@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 import { MermaidPreviewProps } from './types';
-import { StyledMermaidPreview } from './styles';
-import { Button } from '../common/Button';
+import { StyledMermaidPreview, StyledCopyButton } from './styles';
 import debounce from 'lodash.debounce';
+
 
 export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
@@ -122,7 +122,10 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
     <StyledMermaidPreview>
       <div ref={mermaidRef} className="mermaid"></div>
       {error && <div className="error-message">{error}</div>}
-      <Button onClick={copyToClipboard}>図をコピー</Button>
+      <StyledCopyButton
+      onClick={copyToClipboard}
+      children="図をコピー"
+      />
     </StyledMermaidPreview>
   );
 };
