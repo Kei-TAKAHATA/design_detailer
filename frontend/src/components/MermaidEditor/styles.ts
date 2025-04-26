@@ -31,7 +31,7 @@ export const StyledMermaidEditorTextArea = styled.textarea<TextAreaProps>`
   box-sizing: border-box;
   resize: vertical;
 
-  background: #222;         // コードブロック風の黒色の背景色
+  background: #282c34;         // コードブロック風の黒色の背景色
   border-radius: 6px;      // 角丸
   padding: 1rem;               // 内側余白
   font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; // 等幅フォント
