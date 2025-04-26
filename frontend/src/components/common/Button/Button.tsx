@@ -1,11 +1,7 @@
 import React from 'react';
 import { ButtonProps } from './types';
-import { ButtonContainer } from './styles';
+import { StyledButton } from './styles';
 
-export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
-  return (
-    <ButtonContainer onClick={onClick}>
-      {children}
-    </ButtonContainer>
-  );
-};
+export const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
+  <StyledButton {...props}>{children}</StyledButton>
+);
