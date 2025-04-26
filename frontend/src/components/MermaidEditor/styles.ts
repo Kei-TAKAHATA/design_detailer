@@ -7,12 +7,6 @@ export const StyledMermaidEditor = styled.div`
 
   height: 100%;
   margin-bottom: 0.5%; /* 親要素の幅に対する割合で設定 */
-
-  // background: #444;         // コードブロック風のグレー背景色
-  // border-radius: 6px;      // 角丸
-  // padding: 1rem;               // 内側余白
-  // font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; // 等幅フォント
-  // color: #fff;                 // 文字色
 `;
 
 export const StyledMermaidEditorTextArea = styled.textarea<TextAreaProps>`
