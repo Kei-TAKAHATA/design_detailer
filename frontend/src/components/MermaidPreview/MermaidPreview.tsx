@@ -6,6 +6,12 @@ import debounce from 'lodash.debounce';
 import { copySvgToClipboard } from '../../utils/copySvgToClipboard';
 
 
+/**
+ * Mermaid記法のコードをSVGとして描画し、エラー表示やコピー機能も提供するコンポーネント
+ *
+ * @param mermaidCode - Mermaid記法で記述されたダイアグラムのコード
+ * @returns MermaidプレビューのReact要素
+ */
 export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
