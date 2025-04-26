@@ -1,4 +1,3 @@
-export type ButtonProps = {
-  children: React.ReactNode;
-  onClick: () => void;
-};
+import React from 'react';
+
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
