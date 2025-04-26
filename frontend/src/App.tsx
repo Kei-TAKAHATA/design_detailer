@@ -91,7 +91,7 @@ export const App: React.FC = () => {
     // ここでバックエンドAPIを呼び出して、設計の詳細をMermaidフォーマットに変換
     // 例として固定のMermaidコードを使用
     const generatedMermaidCode = `sequenceDiagram
-    participant ユーザー
+    participant ユーザー2
     participant フロントエンド
     participant バックエンド
     participant GPT_API
