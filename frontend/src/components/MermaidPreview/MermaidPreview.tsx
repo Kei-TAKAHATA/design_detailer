@@ -120,6 +120,7 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
   // };
   const handleCopy = async () => {
     if (mermaidRef.current) {
+      // 拡大しても綺麗に見れるようにSVGで取得
       const svgElement = mermaidRef.current.querySelector('svg');
       if (svgElement) {
         try {
