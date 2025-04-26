@@ -81,9 +81,3 @@ export const App: React.FC = () => {
     </div>
   );
 };
-
-// 一旦ここにhooksを作成（後で別ファイルに移す）
-const convertDesignFormTextToMermaidCode = (designFormText: string) => {
-  // ここに変換ロジックを実装
-  return `graph TD;\n${designFormText}`;
-};
