@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DesignDetailEditorProps } from './types';
-import { StyledDesignDetailEditor } from './styles';
+import { StyledDesignDetailEditor, StyledUpdateButton } from './styles';
 import { TextArea } from '../common/TextArea';
+
 
 export const DesignDetailEditor: React.FC<DesignDetailEditorProps> = ({ onSubmit, designDetailText, onChange }) => {
   const [lineCount, setLineCount] = useState(designDetailText.split('\n').length);
@@ -22,6 +23,10 @@ export const DesignDetailEditor: React.FC<DesignDetailEditorProps> = ({ onSubmit
         value={designDetailText}
         onChange={onChange}
         $minRows={Math.max(lineCount + 1, 5)} // 行数を設定、最低でも5行
+      />
+      <StyledUpdateButton
+        onClick={onSubmit}
+        children="詳細を更新"
       />
     </StyledDesignDetailEditor>
   );
