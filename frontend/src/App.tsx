@@ -34,8 +34,8 @@ export const App: React.FC = () => {
     setDesignDetailText(generatedDesignDetailText);
 
     // 詳細の文章からMermaidのコードに変換
-    const generatedMermaidCode = convertDesignDetailTextToMermaidCode(generatedDesignDetailText);
-    setMermaidCode(generatedMermaidCode);
+    const mermaidCode = convertDesignDetailTextToMermaidCode(generatedDesignDetailText);
+    setMermaidCode(mermaidCode);
   };
 
   // 詳細入力ボタンを押した時の処理
