@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 import { MermaidPreviewProps } from './types';
-import { StyledMermaidPreview, StyledCopyButton } from './styles';
+import { MermaidPreviewContainer, CopyButtonContainer } from './styles';
 import debounce from 'lodash.debounce';
 import { copySvgToClipboard } from '../../utils/copySvgToClipboard';
 
@@ -58,7 +58,7 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
   };
 
   return (
-    <StyledMermaidPreview>
+    <MermaidPreviewContainer>
       <div
         ref={mermaidRef}
         className="mermaid"
@@ -70,11 +70,11 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
           {error}
         </div>
       )}
-      <StyledCopyButton
+      <CopyButtonContainer
         onClick={handleCopy}
         aria-label="図をクリップボードにコピー"
         children="図をコピー"
       />
-    </StyledMermaidPreview>
+    </MermaidPreviewContainer>
   );
 };

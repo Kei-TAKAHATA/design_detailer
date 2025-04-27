@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { TextAreaProps } from '../common/TextArea/types';
 
-export const StyledMermaidEditor = styled.div`
+export const MermaidEditorContainer = styled.div`
   width: 100%;
 
   height: 100%;
   margin-bottom: 0.5%; /* 親要素の幅に対する割合で設定 */
 `;
 
-export const StyledMermaidEditorTextArea = styled.textarea<TextAreaProps>`
+export const MermaidEditorTextAreaContainer = styled.textarea<TextAreaProps>`
   // TextAreaのスタイル継承がうまくいかなかったため、同じ部分も記載
   width: 100%;
   min-height: ${({ $minRows = 5 }) => {

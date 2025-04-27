@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DesignDetailEditorProps } from './types';
-import { StyledDesignDetailEditor, StyledUpdateButton } from './styles';
+import { DesignDetailEditorContainer, UpdateButtonContainer } from './styles';
 import { TextArea } from '../common/TextArea';
 
 
@@ -17,17 +17,17 @@ export const DesignDetailEditor: React.FC<DesignDetailEditorProps> = ({ onSubmit
   };
 
   return (
-    <StyledDesignDetailEditor onSubmit={handleSubmit}>
+    <DesignDetailEditorContainer onSubmit={handleSubmit}>
       <TextArea
         placeholder="設計の詳細を入力してください"
         value={designDetailText}
         onChange={onChange}
         $minRows={Math.max(lineCount + 1, 5)} // 行数を設定、最低でも5行
       />
-      <StyledUpdateButton
+      <UpdateButtonContainer
         onClick={onSubmit}
         children="詳細を更新"
       />
-    </StyledDesignDetailEditor>
+    </DesignDetailEditorContainer>
   );
 };
