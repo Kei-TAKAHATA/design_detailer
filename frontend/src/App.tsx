@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { StyledApp } from './styles';
 import { AppTitle } from './components/AppTitle';
 import { DesignForm } from './components/DesignForm';
 import { DesignDetailEditor } from './components/DesignDetailEditor';
@@ -44,7 +45,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <StyledApp>
       <AppTitle title="Design Note"/>
       <DesignForm
         onSubmit={handleConvertButtonClick}
@@ -61,6 +62,6 @@ export const App: React.FC = () => {
         onChange={setMermaidCode}
       />
       <MermaidPreview mermaidCode={mermaidCode} />
-    </div>
+    </StyledApp>
   );
 };

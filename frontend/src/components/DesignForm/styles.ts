@@ -9,7 +9,6 @@ export const StyledDesignForm = styled.div<{ height?: string }>`
 
   height: ${(props) => props.height || 'auto'};
   width: 100%;
-  max-width: 1000px; /* 最大幅を設定 */
   writing-mode: horizontal-tb; /* 横書きに設定 */
   text-orientation: mixed; /* 通常の文字方向に設定 */
   // margin: 0 auto;
