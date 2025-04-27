@@ -59,11 +59,21 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
 
   return (
     <StyledMermaidPreview>
-      <div ref={mermaidRef} className="mermaid"></div>
-      {error && <div className="error-message">{error}</div>}
+      <div
+        ref={mermaidRef}
+        className="mermaid"
+        aria-label="Mermaid図のプレビュー"
+        role="img"
+      ></div>
+      {error && (
+        <div className="error-message" role="alert" aria-live="assertive">
+          {error}
+        </div>
+      )}
       <StyledCopyButton
-      onClick={handleCopy}
-      children="図をコピー"
+        onClick={handleCopy}
+        aria-label="図をクリップボードにコピー"
+        children="図をコピー"
       />
     </StyledMermaidPreview>
   );
