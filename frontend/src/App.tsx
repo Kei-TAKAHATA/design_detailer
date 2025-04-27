@@ -46,9 +46,20 @@ export const App: React.FC = () => {
   return (
     <div>
       <h2>設計を作成するツールだよー</h2>
-      <DesignForm onSubmit={handleConvertButtonClick} value={designFormText} onChange={handleDesignFormChange} />
-      <DesignDetailEditor onSubmit={handleDesignDetailEditorSubmit} designDetailText={designDetailText} onChange={handleDesignDetailEditorChange}/>
-      <MermaidEditor code={mermaidCode} onChange={setMermaidCode} />
+      <DesignForm
+        onSubmit={handleConvertButtonClick}
+        value={designFormText}
+        onChange={handleDesignFormChange}
+      />
+      <DesignDetailEditor
+        onSubmit={handleDesignDetailEditorSubmit}
+        designDetailText={designDetailText}
+        onChange={handleDesignDetailEditorChange}
+      />
+      <MermaidEditor
+        code={mermaidCode}
+        onChange={setMermaidCode}
+      />
       <MermaidPreview mermaidCode={mermaidCode} />
     </div>
   );
