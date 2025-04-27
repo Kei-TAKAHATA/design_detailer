@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { TextAreaProps } from './types';
 
-export const StyledTextArea = styled.textarea<TextAreaProps>`
+export const TextAreaContainer = styled.textarea<TextAreaProps>`
   width: 100%;
   min-height: ${({ $minRows = 5 }) => {
     return `calc(1.5em * ${$minRows})`;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MermaidEditorProps } from './types';
-import { StyledMermaidEditor, StyledMermaidEditorTextArea } from './styles';
+import { MermaidEditorContainer, MermaidEditorTextAreaContainer } from './styles';
 
 
 export const MermaidEditor: React.FC<MermaidEditorProps> = ({ code, onChange }) => {
@@ -11,8 +11,8 @@ export const MermaidEditor: React.FC<MermaidEditorProps> = ({ code, onChange }) 
   }, [code]);
 
   return (
-    <StyledMermaidEditor>
-      <StyledMermaidEditorTextArea
+    <MermaidEditorContainer>
+      <MermaidEditorTextAreaContainer
         value={code}
         onChange={(event) => onChange(event.target.value)}
         $minRows={Math.max(lineCount + 1, 5)}
@@ -20,6 +20,6 @@ export const MermaidEditor: React.FC<MermaidEditorProps> = ({ code, onChange }) 
         $cols={50}
         placeholder="Mermaidのコードを入力してください"
       />
-    </StyledMermaidEditor>
+    </MermaidEditorContainer>
   );
 };

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledAppTitle = styled.h1`
+export const AppTitleContainer = styled.h1`
   width: 100%;
-  max-width: 1000px;
   margin: 0 0 1.5rem 0;      /* 上下の余白だけ */
   padding: 1.2rem 0;
   background: #e3f2fd;
