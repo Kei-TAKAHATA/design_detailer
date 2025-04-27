@@ -1,6 +1,6 @@
 import React from 'react';
 import { DesignFormProps } from './types';
-import { StyledDesignForm, StyledConvertButton } from './styles';
+import { DesignFormContainer, ConvertButtonContainer } from './styles';
 import { TextArea } from '../common/TextArea';
 
 
@@ -11,17 +11,17 @@ export const DesignForm: React.FC<DesignFormProps> = ({ onSubmit, value, onChang
   };
 
   return (
-    <StyledDesignForm onSubmit={handleSubmit} height="8rem">
+    <DesignFormContainer onSubmit={handleSubmit} height="8rem">
       <TextArea
         placeholder="設計の概要を入力してください"
         value={value}
         onChange={onChange}
         $minRows={1}
       />
-      <StyledConvertButton
+      <ConvertButtonContainer
         onClick={onSubmit}
         children="設計を生成"
       />
-    </StyledDesignForm>
+    </DesignFormContainer>
   );
 };
