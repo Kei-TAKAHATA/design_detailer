@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import mermaid from 'mermaid';
 import { DesignForm } from './components/DesignForm';
 import { DesignDetailEditor } from './components/DesignDetailEditor';
 import { MermaidEditor } from './components/MermaidEditor';
