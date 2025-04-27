@@ -4,8 +4,6 @@ import { Button } from "../common/Button";
 export const DesignDetailEditorContainer = styled.div`
   display: flex;
   flex-direction: row; /* 子要素を横に並べる */
-  // justify-content: flex-end; /* 子要素を右に配置 */
-  // align-items: flex-end; /* 子要素を下に配置 */
   gap: 2%; /* 子要素間の隙間を設定 */
   width: 100%;
   margin-bottom: 2%; /* 親要素の幅に対する割合で設定 */
