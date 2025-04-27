@@ -17,15 +17,6 @@ export const DesignFormContainer = styled.div<{ height?: string }>`
   margin-right: 0; /* 右側のマージンを0に設定 */
 `;
 
-// export const StyledDesignFormTextArea = styled(TextArea)`
-//   background: #444;         // コードブロック風のグレー背景色
-//   border-radius: 6px;      // 角丸
-//   padding: 1rem;               // 内側余白
-//   font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; // 等幅フォント
-//   color: #fff;                 // 文字色
-// `;
-
-
 export const ConvertButtonContainer = styled(Button)`
   height: 100%; /* 親要素の高さに合わせる */
   width: 20%;
