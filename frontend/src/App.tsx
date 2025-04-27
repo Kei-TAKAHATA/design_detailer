@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AppTitle } from './components/AppTitle';
 import { DesignForm } from './components/DesignForm';
 import { DesignDetailEditor } from './components/DesignDetailEditor';
 import { MermaidEditor } from './components/MermaidEditor';
@@ -44,7 +45,7 @@ export const App: React.FC = () => {
 
   return (
     <div>
-      <h2>設計を作成するツールだよー</h2>
+      <AppTitle title="Design Note"/>
       <DesignForm
         onSubmit={handleConvertButtonClick}
         value={designFormText}
