@@ -52,28 +52,29 @@ app_name/
 │       └── env.development          # 環境変数（開発用）
 │       └── env.production           # 環境変数（本番用）
 │
-├── backend/                         # バックエンド（Node.js / Express）
+├── backend/                         # バックエンド（Python / FastAPI）
 │   ├── src/
-│   │   ├── controllers/             # ルーティングごとの処理まとめ
-│   │   │   └── designController.ts  # 設計データ用コントローラー
+│   │   ├── api/                     # APIルーティング定義（APIRouterでエンドポイントをまとめる）
+│   │   │   └── design.py            # /api/designエンドポイント
+│   │   ├── controllers/             # コントローラー層（リクエストごとの処理）
+│   │   │   └── design_controller.py
 │   │   ├── services/                # ビジネスロジック層
-│   │   │   └── designService.ts     # データ取得・保存処理
-│   │   ├── models/                  # DBスキーマ（ORMを使う場合）
-│   │   │   └── Design.ts            # 設計データモデル
-│   │   ├── routes/                  # APIルーティング定義
-│   │   │   └── designRoutes.ts      # /api/designエンドポイント
+│   │   │   └── design_service.py
+│   │   ├── models/                  # PydanticモデルやDBモデル
+│   │   │   └── design.py
 │   │   ├── utils/                   # 汎用ヘルパー関数
-│   │   ├── config/                  # 設定ファイル（DB接続・環境変数）
-│   │   │   └── db.ts                # データベース接続設定
-│   │   └── server.ts                # アプリケーションのエントリポイント
+│   │   │   └── helpers.py
+│   │   ├── config/                  # 設定ファイル（DB接続、環境変数など）
+│   │   │   └── db.py
+│   │   └── main.py                  # アプリケーションのエントリポイント
 │   │
-│   └── tests/                       # バックエンド用テストコード
-│       └── design.test.ts
+│   └── tests/                       # バックエンド用テストコード（pytest推奨）
+│       └── test_design.py
 │
 ├── docker-compose.yml               # コンテナ環境構築用ファイル
 ├── .env                             # 環境変数（共通）
 ├── README.md                        # プロジェクト概要
-└── package.json                     # プロジェクト依存関係
+└── requirements.txt                 # Python依存パッケージ
 
 ```
 
