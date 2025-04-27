@@ -3,8 +3,15 @@ import mermaid from 'mermaid';
 import { MermaidPreviewProps } from './types';
 import { StyledMermaidPreview, StyledCopyButton } from './styles';
 import debounce from 'lodash.debounce';
+import { copySvgToClipboard } from '../../utils/copySvgToClipboard';
 
 
+/**
+ * Mermaid記法のコードをSVGとして描画し、エラー表示やコピー機能も提供するコンポーネント
+ *
+ * @param mermaidCode - Mermaid記法で記述されたダイアグラムのコード
+ * @returns MermaidプレビューのReact要素
+ */
 export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
@@ -34,97 +41,39 @@ export const MermaidPreview: React.FC<MermaidPreviewProps> = ({ mermaidCode }) =
     };
   }, [mermaidCode]);
 
-  // const copyToClipboard = () => {
-  //   if (mermaidRef.current) {
-  //     const svgContent = mermaidRef.current.innerHTML;
-  //     navigator.clipboard.writeText(svgContent).then(() => {
-  //       alert('図がクリップボードにコピーされました！');
-  //     }).catch(err => {
-  //       console.error('クリップボードへのコピーに失敗しました: ', err);
-  //     });
-  //   }
-  // };
-  // const copyToClipboard = () => {
-  //   if (mermaidRef.current) {
-  //     const svgElement = mermaidRef.current.querySelector('svg');
-  //     if (svgElement) {
-  //       const canvas = document.createElement('canvas');
-  //       const ctx = canvas.getContext('2d');
-  //       const svgData = new XMLSerializer().serializeToString(svgElement);
-  //       const img = new Image();
-  //       const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-  //       const url = URL.createObjectURL(svgBlob);
-
-  //       img.onload = () => {
-  //         canvas.width = img.width;
-  //         canvas.height = img.height;
-  //         ctx?.drawImage(img, 0, 0);
-  //         canvas.toBlob((blob) => {
-  //           if (blob) {
-  //             const item = new ClipboardItem({ 'image/png': blob });
-  //             navigator.clipboard.write([item]).then(() => {
-  //               alert('図がクリップボードに画像としてコピーされました！');
-  //             }).catch(err => {
-  //               console.error('クリップボードへのコピーに失敗しました: ', err);
-  //             });
-  //           }
-  //         });
-  //         URL.revokeObjectURL(url);
-  //       };
-  //       img.src = url;
-  //     }
-  //   }
-  // };
-
-  const copyToClipboard = () => {
+  const handleCopy = async () => {
     if (mermaidRef.current) {
+      // 拡大しても綺麗に見れるようにSVGで取得
       const svgElement = mermaidRef.current.querySelector('svg');
       if (svgElement) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const svgData = new XMLSerializer().serializeToString(svgElement);
-        const img = new Image();
-        const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-        const url = URL.createObjectURL(svgBlob);
-
-        img.onload = () => {
-          // SVGのviewBox属性を使用してサイズを設定
-          const viewBox = svgElement.getAttribute('viewBox');
-          if (viewBox) {
-            const [minX, minY, width, height] = viewBox.split(' ').map(Number);
-            canvas.width = width;
-            canvas.height = height;
-          } else {
-            // viewBoxがない場合は、デフォルトのサイズを使用
-            canvas.width = img.width;
-            canvas.height = img.height;
-          }
-
-          ctx?.drawImage(img, 0, 0);
-          canvas.toBlob((blob) => {
-            if (blob) {
-              const item = new ClipboardItem({ 'image/png': blob });
-              navigator.clipboard.write([item]).then(() => {
-                alert('図がクリップボードに画像としてコピーされました！');
-              }).catch(err => {
-                console.error('クリップボードへのコピーに失敗しました: ', err);
-              });
-            }
-          });
-          URL.revokeObjectURL(url);
-        };
-        img.src = url;
+        try {
+          await copySvgToClipboard(svgElement);
+          alert('図がクリップボードに画像としてコピーされました！');
+        } catch (err) {
+          console.error('クリップボードへのコピーに失敗しました: ', err);
+          alert('コピーに失敗しました');
+        }
       }
     }
   };
 
   return (
     <StyledMermaidPreview>
-      <div ref={mermaidRef} className="mermaid"></div>
-      {error && <div className="error-message">{error}</div>}
+      <div
+        ref={mermaidRef}
+        className="mermaid"
+        aria-label="Mermaid図のプレビュー"
+        role="img"
+      ></div>
+      {error && (
+        <div className="error-message" role="alert" aria-live="assertive">
+          {error}
+        </div>
+      )}
       <StyledCopyButton
-      onClick={copyToClipboard}
-      children="図をコピー"
+        onClick={handleCopy}
+        aria-label="図をクリップボードにコピー"
+        children="図をコピー"
       />
     </StyledMermaidPreview>
   );
