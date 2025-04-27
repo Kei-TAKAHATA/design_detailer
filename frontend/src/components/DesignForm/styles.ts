@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "../common/Button";
 
 
-export const StyledDesignForm = styled.div<{ height?: string }>`
+export const DesignFormContainer = styled.div<{ height?: string }>`
   display: flex;
   flex-direction: row;
   gap: 2%; /* gapが余白を作っている可能性があるので確認 */
@@ -26,7 +26,7 @@ export const StyledDesignForm = styled.div<{ height?: string }>`
 // `;
 
 
-export const StyledConvertButton = styled(Button)`
+export const ConvertButtonContainer = styled(Button)`
   height: 100%; /* 親要素の高さに合わせる */
   width: 20%;
   padding: 0.5rem 4rem; /* ボタンの内側の余白を設定 */
