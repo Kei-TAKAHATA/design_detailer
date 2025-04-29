@@ -1,4 +1,19 @@
 def convert_design_detail_to_mermaid(design_detail: str, count: int | None = None) -> str:
+    """
+    設計詳細テキストをMermaid記法の図に変換する。
+
+    Parameters
+    ----------
+    design_detail : str
+        設計詳細のテキスト
+    count : int, optional
+        追加のオプション。2の場合は別パターンを返す。
+
+    Returns
+    -------
+    str
+        Mermaid記法のシーケンス図
+    """
     # 仮のロジック（本来はここでNLPやDB処理などを行う）
     if count is None:
         mermaid = """sequenceDiagram
