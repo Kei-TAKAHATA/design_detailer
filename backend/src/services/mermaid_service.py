@@ -1,6 +1,5 @@
 def convert_design_detail_to_mermaid(design_detail: str, count: int | None = None) -> str:
     # 仮のロジック（本来はここでNLPやDB処理などを行う）
-    print("count", count)
     if count is None:
         mermaid = """sequenceDiagram
         participant ユーザー
