@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { AppContainer } from './styles';
 import { AppTitle } from './components/AppTitle';
 import { DesignForm } from './components/DesignForm';
 import { DesignDetailEditor } from './components/DesignDetailEditor';
@@ -27,25 +26,25 @@ export const App: React.FC = () => {
   };
 
   // 概要入力ボタンを押した時の処理
-  const handleConvertButtonClick = () => {
+  const handleConvertButtonClick = async () => {
     // 概要の入力欄のテキストから詳細を生成
-    const generatedDesignDetailText = generateDesignDetailText(designFormText);
+    const generatedDesignDetailText = await generateDesignDetailText(designFormText);
     setDesignDetailText(generatedDesignDetailText);
 
     // 詳細の文章からMermaidのコードに変換
-    const newMermaidCode = convertDesignDetailTextToMermaidCode(generatedDesignDetailText);
+    const newMermaidCode = await convertDesignDetailTextToMermaidCode(generatedDesignDetailText);
     setMermaidCode(newMermaidCode);
   };
 
   // 詳細入力ボタンを押した時の処理
-  const handleDesignDetailEditorSubmit = () => {
+  const handleDesignDetailEditorSubmit = async () => {
     // 詳細の文章からMermaidのコードに変換
-    const newMermaidCode = convertDesignDetailTextToMermaidCode(designDetailText, 2);
+    const newMermaidCode = await convertDesignDetailTextToMermaidCode(designDetailText, 2);
     setMermaidCode(newMermaidCode);
   };
 
   return (
-    <AppContainer>
+    <div>
       <AppTitle title="Design Note"/>
       <DesignForm
         onSubmit={handleConvertButtonClick}
@@ -62,6 +61,6 @@ export const App: React.FC = () => {
         onChange={setMermaidCode}
       />
       <MermaidPreview mermaidCode={mermaidCode} />
-    </AppContainer>
+    </div>
   );
 };

@@ -6,3 +6,6 @@ node_modules/
 
 # nodeenv 環境を除外
 versions/
+
+# バイトコード（中間ファイル）
+__pycache__/
