@@ -5,8 +5,6 @@
  */
 export async function convertDesignDetailTextToMermaidCode(designDetailText: string, count?: number): Promise<string> {
     // バックエンドAPIを呼び出して、設計の詳細をMermaidフォーマットに変換
-    console.log("designDetailText", designDetailText);
-    console.log("count", count);
     const response = await fetch('http://127.0.0.1:8000/api/mermaid', {
         method: 'POST',
         headers: {
@@ -21,6 +19,5 @@ export async function convertDesignDetailTextToMermaidCode(designDetailText: str
         throw new Error('APIリクエストに失敗しました');
     }
     const data = await response.json();
-    console.log("data", data);
     return data.mermaid;
 }
