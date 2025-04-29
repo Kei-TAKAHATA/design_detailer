@@ -1,4 +1,17 @@
 def generate_design_detail(design_summary: str) -> str:
+    """
+    設計概要テキストから設計詳細テキストを生成する。
+
+    Parameters
+    ----------
+    design_summary : str
+        設計の概要テキスト。
+
+    Returns
+    -------
+    str
+        生成された設計詳細テキスト。
+    """
     # 仮のロジック（本来はここでNLPやDB処理などを行う）
     design_detail = """1. ユーザーインターフェース (React + TypeScript)
       入力コンポーネント:
