@@ -1,6 +1,5 @@
 def generate_design_detail(design_summary: str) -> str:
     # 仮のロジック（本来はここでNLPやDB処理などを行う）
-    # detail = f"『{summary}』の詳細設計（ここに生成ロジックを追加）"
     design_detail = """1. ユーザーインターフェース (React + TypeScript)
       入力コンポーネント:
       設計の概要を入力するためのテキストエリア。
