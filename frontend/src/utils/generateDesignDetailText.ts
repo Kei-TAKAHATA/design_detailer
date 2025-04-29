@@ -23,6 +23,5 @@ export async function generateDesignDetailText(designFormText: string): Promise<
         throw new Error('APIリクエストに失敗しました');
     }
     const data = await response.json();
-    console.log("data", data);
     return data.design_detail;
 }
