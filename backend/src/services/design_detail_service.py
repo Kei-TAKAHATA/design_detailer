@@ -17,7 +17,6 @@ def generate_design_detail(design_summary: str) -> str:
     str
         生成された設計詳細テキスト。
     """
-    # 仮のロジック（本来はここでNLPやDB処理などを行う）
     # 設計の概要をモデルに入力
     prompt = (
         "あなたはシステム設計の専門家です。\n"
