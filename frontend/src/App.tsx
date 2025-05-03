@@ -6,6 +6,7 @@ import { MermaidEditor } from './components/MermaidEditor';
 import { MermaidPreview } from './components/MermaidPreview';
 import { generateDesignDetailText } from './utils/generateDesignDetailText';
 import { convertDesignDetailTextToMermaidCode } from './utils/convertDesignDetailTextToMermaidCode';
+import { AppContainer } from './styles';
 
 export const App: React.FC = () => {
   // 概要の入力欄のテキスト管理
@@ -44,7 +45,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <AppContainer>
       <AppTitle title="Design Note"/>
       <DesignForm
         onSubmit={handleConvertButtonClick}
@@ -61,6 +62,6 @@ export const App: React.FC = () => {
         onChange={setMermaidCode}
       />
       <MermaidPreview mermaidCode={mermaidCode} />
-    </div>
+    </AppContainer>
   );
 };
