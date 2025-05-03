@@ -47,7 +47,6 @@ def generate_design_detail(design_summary: str) -> str:
     )
     start = time.time()
     print("=== 推論開始 ===")
-    # prompt = "Think in English and response in Japanese:\n: テストと返して！"
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     print(f"トークナイズ完了: {time.time() - start:.2f}秒")
     outputs = model.generate(**inputs, max_new_tokens=1000)
