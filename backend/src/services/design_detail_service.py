@@ -53,7 +53,7 @@ def generate_design_detail(design_summary: str) -> str:
     outputs = model.generate(**inputs, max_new_tokens=1000)
     print(f"モデル推論完了: {time.time() - start:.2f}秒")
     input_length = inputs['input_ids'].shape[1]
-    generated_text = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
+    design_detail = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
     print(f"デコード完了: {time.time() - start:.2f}秒")
 
     # design_detail = """1. ユーザーインターフェース (React + TypeScript)
@@ -76,4 +76,4 @@ def generate_design_detail(design_summary: str) -> str:
     #   生成された図をユーザーインターフェースに表示。
     #   出力の統合:
     #   設計の概要と生成された図をまとめて表示するためのロジックを実装。"""
-    return generated_text
+    return design_detail
