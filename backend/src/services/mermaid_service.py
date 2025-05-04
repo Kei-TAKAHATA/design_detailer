@@ -19,7 +19,7 @@ def convert_design_detail_to_mermaid(design_detail: str, count: int | None = Non
     str
         Mermaid記法のシーケンス図
     """
-    # 仮のロジック（本来はここでNLPやDB処理などを行う）
+    # 設計詳細をMermaid記法の図に変換する処理
     prompt = (
         "あなたはシステム設計の専門家です。\n"
         "以下の設計詳細をもとに、Mermaid記法のシーケンス図を生成してください。\n"
