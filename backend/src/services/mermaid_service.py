@@ -3,7 +3,7 @@ import time
 from .model_loader import tokenizer, model
 
 
-def convert_design_detail_to_mermaid(design_detail: str, count: int | None = None) -> str:
+def convert_design_detail_to_mermaid(design_detail: str) -> str:
     """
     設計詳細テキストをMermaid記法の図に変換する。
 

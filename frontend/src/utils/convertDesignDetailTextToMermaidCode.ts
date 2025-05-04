@@ -3,7 +3,7 @@
  * @param designDetailText - 設計の詳細テキスト
  * @returns 変換されたMermaid記法のコード（図の種類は内容により異なる）
  */
-export async function convertDesignDetailTextToMermaidCode(designDetailText: string, count?: number): Promise<string> {
+export async function convertDesignDetailTextToMermaidCode(designDetailText: string): Promise<string> {
     // バックエンドAPIを呼び出して、設計の詳細をMermaidフォーマットに変換
     const response = await fetch('http://127.0.0.1:8000/api/mermaid', {
         method: 'POST',
@@ -12,7 +12,6 @@ export async function convertDesignDetailTextToMermaidCode(designDetailText: str
         },
         body: JSON.stringify({
             design_detail: designDetailText,
-            count: count
         }),
     });
     if (!response.ok) {
