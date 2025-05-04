@@ -9,11 +9,8 @@ class MermaidRequest(BaseModel):
     ----------
     design_detail : str
         設計詳細のテキスト。
-    count : int, optional
-        追加のオプション。2の場合は別パターンを返す。
     """
     design_detail: str
-    count: int | None = None
 
 
 class MermaidResponse(BaseModel):

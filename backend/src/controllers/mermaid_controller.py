@@ -17,7 +17,6 @@ def generate_mermaid(request: MermaidRequest) -> MermaidResponse:
         生成されたMermaid記法の図を含むレスポンスモデル。
     """
     mermaid = mermaid_service.convert_design_detail_to_mermaid(
-        request.design_detail,
-        request.count
+        design_detail=request.design_detail,
     )
     return MermaidResponse(mermaid=mermaid)
