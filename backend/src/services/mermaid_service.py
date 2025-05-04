@@ -23,6 +23,8 @@ def convert_design_detail_to_mermaid(design_detail: str, count: int | None = Non
     prompt = (
         "あなたはシステム設計の専門家です。\n"
         "以下の設計詳細をもとに、Mermaid記法のシーケンス図を生成してください。\n"
+        "出力はMermaidコードのみで、説明やコメントは不要です。\n"
+        "participant名（登場人物やシステム名）は必ず日本語で記述してください。\n"
         "例:\n"
         "【設計詳細】\n"
         "1. ユーザーインターフェース (React + TypeScript)\n"
@@ -70,13 +72,21 @@ def convert_design_detail_to_mermaid(design_detail: str, count: int | None = Non
     )
     start = time.time()
     print("=== 推論開始 ===")
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    print(f"トークナイズ完了: {time.time() - start:.2f}秒")
-    outputs = model.generate(**inputs, max_new_tokens=1000)
-    print(f"モデル推論完了: {time.time() - start:.2f}秒")
-    input_length = inputs['input_ids'].shape[1]
-    mermaid = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
-    print(f"デコード完了: {time.time() - start:.2f}秒")
+    if tokenizer:
+        # transformersのモデルを使用する場合
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        print(f"トークナイズ完了: {time.time() - start:.2f}秒")
+        outputs = model.generate(**inputs, max_new_tokens=1000)
+        print(f"モデル推論完了: {time.time() - start:.2f}秒")
+        input_length = inputs['input_ids'].shape[1]
+        mermaid = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
+        print(f"デコード完了: {time.time() - start:.2f}秒")
+    else:
+        # llama_cppのモデルを使用する場合
+        outputs = model(prompt, max_tokens=1000)
+        print(f"モデル推論完了: {time.time() - start:.2f}秒")
+        mermaid = outputs["choices"][0]["text"]
+
     # if count is None:
     #     mermaid = """sequenceDiagram
     #     participant ユーザー

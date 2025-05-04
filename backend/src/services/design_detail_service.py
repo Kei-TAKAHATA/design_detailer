@@ -47,13 +47,20 @@ def generate_design_detail(design_summary: str) -> str:
     )
     start = time.time()
     print("=== 推論開始 ===")
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    print(f"トークナイズ完了: {time.time() - start:.2f}秒")
-    outputs = model.generate(**inputs, max_new_tokens=1000)
-    print(f"モデル推論完了: {time.time() - start:.2f}秒")
-    input_length = inputs['input_ids'].shape[1]
-    design_detail = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
-    print(f"デコード完了: {time.time() - start:.2f}秒")
+    if tokenizer:
+        # transformersのモデルを使用する場合
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        print(f"トークナイズ完了: {time.time() - start:.2f}秒")
+        outputs = model.generate(**inputs, max_new_tokens=1000)
+        print(f"モデル推論完了: {time.time() - start:.2f}秒")
+        input_length = inputs['input_ids'].shape[1]
+        design_detail = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
+        print(f"デコード完了: {time.time() - start:.2f}秒")
+    else:
+        # llama_cppのモデルを使用する場合
+        outputs = model(prompt, max_tokens=1000)
+        print(f"モデル推論完了: {time.time() - start:.2f}秒")
+        design_detail = outputs["choices"][0]["text"]
 
     # design_detail = """1. ユーザーインターフェース (React + TypeScript)
     #   入力コンポーネント:
