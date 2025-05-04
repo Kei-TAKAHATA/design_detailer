@@ -9,3 +9,6 @@ versions/
 
 # バイトコード（中間ファイル）
 __pycache__/
+
+# モデル
+models/
