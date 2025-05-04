@@ -40,7 +40,7 @@ export const App: React.FC = () => {
   // 詳細入力ボタンを押した時の処理
   const handleDesignDetailEditorSubmit = async () => {
     // 詳細の文章からMermaidのコードに変換
-    const newMermaidCode = await convertDesignDetailTextToMermaidCode(designDetailText, 2);
+    const newMermaidCode = await convertDesignDetailTextToMermaidCode(designDetailText);
     setMermaidCode(newMermaidCode);
   };
 
