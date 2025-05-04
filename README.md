@@ -14,6 +14,8 @@ app_name/
 │   └── config/         # フロントエンド用設定（環境設定、ビルド設定）
 │
 ├── backend/            # バックエンド（APIサーバーなど）
+│   ├── models/         # モデルファイル（.gguf等）
+│   ├── lib/            # llama.cppなど外部バイナリ
 │   ├── src/            # サーバーコード（データの処理、APIロジック）
 │   └── config/         # バックエンド設定（DB接続設定、APIキーなど）
 │
@@ -53,7 +55,9 @@ app_name/
 │       └── env.production           # 環境変数（本番用）
 │
 ├── backend/                         # バックエンド（Python / FastAPI）
-│   ├── src/
+│   ├── models/                      # LLMなどのモデルファイル（.gguf等）
+│   ├── lib/                         # llama.cpp等の外部バイナリ・C/C++ライブラリ
+│   ├── src/                         # Pythonアプリ本体
 │   │   ├── api/                     # APIルーティング定義（APIRouterでエンドポイントをまとめる）
 │   │   │   └── design.py            # /api/designエンドポイント
 │   │   ├── controllers/             # コントローラー層（リクエストごとの処理）
@@ -66,6 +70,7 @@ app_name/
 │   │   │   └── helpers.py
 │   │   ├── config/                  # 設定ファイル（DB接続、環境変数など）
 │   │   │   └── db.py
+│   │   ├── lib/                     # Python自作モジュール（必要な場合のみ）
 │   │   └── main.py                  # アプリケーションのエントリポイント
 │   │
 │   └── tests/                       # バックエンド用テストコード（pytest推奨）
