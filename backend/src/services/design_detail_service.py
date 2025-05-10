@@ -81,7 +81,13 @@ def generate_design_detail(design_summary: str) -> str:
     str
         生成された設計詳細テキスト。
     """
-    design_detail_prompt_template = PROMPT_TEMPLATES["design_detail"][model_name]
+    if model_name in PROMPT_TEMPLATES["design_detail"]:
+        design_detail_prompt_template = PROMPT_TEMPLATES["design_detail"][model_name]
+    else:
+        print("モデル未指定時の設計詳細生成用プロンプトを使用します")
+        design_detail_prompt_template = PROMPT_TEMPLATES["design_detail"]["default"]
+
+    # design_detail_prompt_template = PROMPT_TEMPLATES["design_detail"][model_name]
     max_tokens = 1000
     prompt = select_design_detail_prompt(
         design_summary=design_summary,
