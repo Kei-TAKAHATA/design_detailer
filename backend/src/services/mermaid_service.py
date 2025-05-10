@@ -79,7 +79,13 @@ def convert_design_detail_to_mermaid(design_detail: str) -> str:
     str
         Mermaid記法のシーケンス図
     """
-    mermaid_prompt_template = PROMPT_TEMPLATES["mermaid"][model_name]
+    if model_name in PROMPT_TEMPLATES["mermaid"]:
+        mermaid_prompt_template = PROMPT_TEMPLATES["mermaid"][model_name]
+    else:
+        print("モデル未指定時のMermaid生成用プロンプトを使用します")
+        mermaid_prompt_template = PROMPT_TEMPLATES["mermaid"]["default"]
+
+    # mermaid_prompt_template = PROMPT_TEMPLATES["mermaid"][model_name]
     max_tokens = 500
     prompt = select_mermaid_prompt(
         design_detail=design_detail,
