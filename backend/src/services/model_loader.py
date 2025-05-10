@@ -8,8 +8,8 @@ print("=== モデルロード開始 ===")
 context_window = None
 model_id = None
 
-model_name = "plamo"
-model_path = "models/plamo/plamo-13b-Q4_K_M.gguf"
+model_name = "swallow_ms"
+model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL.gguf"
 
 # 普通
 # model_name = "rakuten"
@@ -19,11 +19,15 @@ model_path = "models/plamo/plamo-13b-Q4_K_M.gguf"
 # model_name = "deepseek"
 # model_path = "models/deepseek/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf"
 
+# model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+
+# 厳しい
+# model_name = "plamo"
+# model_path = "models/plamo/plamo-13b-Q4_K_M.gguf"
+
 # 良い
 # model_name = "elyza"
 # model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
-
-# model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
 
 # メモリ不足
 # llama_cppのモデル
