@@ -7,15 +7,19 @@ from llama_cpp import Llama
 print("=== モデルロード開始 ===")
 context_window = None
 model_id = None
-model_name = "deepseek"
-model_path = "models/deepseek/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf"
 
+model_name = "rakuten"
+model_path = "models/rakuten/RakutenAI-7B-instruct-q4_K_M.gguf"
 
+# 微妙
+# model_name = "deepseek"
+# model_path = "models/deepseek/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf"
+
+# 良い
 # model_name = "elyza"
 # model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
-
 
 # メモリ不足
 # llama_cppのモデル
