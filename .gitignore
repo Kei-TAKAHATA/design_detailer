@@ -1,7 +1,7 @@
 # ディレクトリのメタデータ
 .DS_Store
 
-# 外部ライブラリ
+# フロント用外部ライブラリ
 node_modules/
 
 # nodeenv 環境を除外
@@ -10,5 +10,8 @@ versions/
 # バイトコード（中間ファイル）
 __pycache__/
 
+# バックエンド用外部ライブラリ
+backend/lib/
+
 # モデル
-models/
+backend/models/
