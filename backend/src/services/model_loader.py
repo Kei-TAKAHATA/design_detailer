@@ -5,15 +5,28 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from llama_cpp import Llama
 
 print("=== モデルロード開始 ===")
-model_name = "deepseek"
 context_window = None
 model_id = None
-# model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q4_K_M.gguf"
-model_name = "elyza"
-model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
+model_name = "deepseek"
+model_path = "models/deepseek/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf"
+
+
+# model_name = "elyza"
+# model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+
+
 # メモリ不足
+# llama_cppのモデル
+# model_id = None
+# model_name = "deepseek"
+# model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q3_K_M.gguf"
+# model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q3_K_L.gguf"
+# model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q4_K_S.gguf"
+
+
+# transformersのモデル
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
 # model_id = "elyza/ELYZA-japanese-Llama-2-7b"
@@ -58,6 +71,7 @@ try:
         model = Llama(model_path=model_path, n_ctx=max_ctx, n_gpu_layers=32)
         # context_windowが大きすぎるとメモリーオーバーになるので4096に制限
         context_window = min(max_ctx, 4096)
+        print(f"max_ctx: {max_ctx}")
         print(f"context_window: {context_window}")
         # model = Llama(model_path=model_path, n_ctx=2048, n_gpu_layers=32)
     else:
