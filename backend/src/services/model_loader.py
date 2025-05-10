@@ -8,9 +8,12 @@ print("=== モデルロード開始 ===")
 context_window = None
 model_id = None
 
-model_name = "rakuten"
-model_path = "models/rakuten/RakutenAI-7B-instruct-q3_K_M.gguf"
+model_name = "plamo"
+model_path = "models/plamo/plamo-13b-Q4_K_M.gguf"
 
+# 普通
+# model_name = "rakuten"
+# model_path = "models/rakuten/RakutenAI-7B-instruct-q3_K_M.gguf"
 
 # 微妙
 # model_name = "deepseek"
