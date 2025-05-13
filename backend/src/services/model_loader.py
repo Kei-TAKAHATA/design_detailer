@@ -9,7 +9,7 @@ context_window = None
 model_id = None
 
 model_name = "elyza"
-model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
+model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 
 # 普通
 # model_name = "rakuten"
@@ -27,6 +27,7 @@ model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
 # 良い
 # model_name = "elyza"
+# model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
 # model_name = "swallow_ms"
