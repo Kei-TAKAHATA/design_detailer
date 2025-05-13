@@ -8,8 +8,8 @@ print("=== モデルロード開始 ===")
 context_window = None
 model_id = None
 
-model_name = "swallow_ms"
-model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL.gguf"
+model_name = "elyza"
+model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
 # 普通
 # model_name = "rakuten"
@@ -29,6 +29,13 @@ model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL
 # model_name = "elyza"
 # model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
+# model_name = "swallow_ms"
+# model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL.gguf"
+
+# トークン数不足
+# model_name = "cyberagent"
+# model_path = "models/cyberagent/cyberagent-open-calm-7b-q4_K_M.gguf"
+
 # メモリ不足
 # llama_cppのモデル
 # model_id = None
@@ -37,6 +44,8 @@ model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL
 # model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q3_K_L.gguf"
 # model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q4_K_S.gguf"
 
+# model_name = "cyberagent"
+# model_path = "models/cyberagent/cyberagent-calm2-7b-chat-dpo-experimental-q4_K_M.gguf"
 
 # transformersのモデル
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
