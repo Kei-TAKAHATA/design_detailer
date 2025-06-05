@@ -1,12 +1,13 @@
 import torch
-# transformersのモデルを使用する場合
+# Transformers対応モデルを使用する場合
 from transformers import AutoModelForCausalLM, AutoTokenizer
-# llama_cppのモデルを使用する場合
+# llama_cpp対応モデルを使用する場合
 from llama_cpp import Llama
 
 print("=== モデルロード開始 ===")
 context_window = None
 model_id = None
+model_path = None
 
 model_name = "elyza"
 model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
@@ -19,6 +20,7 @@ model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_name = "deepseek"
 # model_path = "models/deepseek/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf"
 
+# model_name = "deepseek"
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
 
 # 厳しい
@@ -38,7 +40,7 @@ model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_path = "models/cyberagent/cyberagent-open-calm-7b-q4_K_M.gguf"
 
 # メモリ不足
-# llama_cppのモデル
+# llama_cpp対応モデル
 # model_id = None
 # model_name = "deepseek"
 # model_path = "models/deepseek/deepseek-coder-6.7b-instruct.Q3_K_M.gguf"
@@ -48,7 +50,7 @@ model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_name = "cyberagent"
 # model_path = "models/cyberagent/cyberagent-calm2-7b-chat-dpo-experimental-q4_K_M.gguf"
 
-# transformersのモデル
+# Transformers対応モデル
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
 # model_id = "elyza/ELYZA-japanese-Llama-2-7b"
@@ -65,7 +67,7 @@ print(f"使用デバイス: {device}")
 
 try:
     if model_id:
-        # transformersのモデルを使用する場合
+        # Transformers対応モデルを使用する場合
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
@@ -73,8 +75,13 @@ try:
             device_map=device,
             trust_remote_code=True,
         )
+        max_ctx = tokenizer.model_max_length
+        # context_windowが大きすぎるとメモリーオーバーになるので4096に制限
+        context_window = min(max_ctx, 4096)
+        print(f"max_ctx: {max_ctx}")
+        print(f"context_window: {context_window}")
     elif model_path:
-        # llama_cppのモデルを使用する場合
+        # llama_cpp対応モデルを使用する場合
         tokenizer = None  # llama-cpp-pythonは独自のトークナイザーを内包
 
         # modelごとにcontext_windowが異なるため、最大値を取得し利用する。
