@@ -43,13 +43,13 @@ def select_design_detail_prompt(
     # minimal_prompt = design_detail_prompt_template["minimal"].format(design_summary=design_summary)
 
     if tokenizer_:
-        # transformersの場合
+        # Transformers対応モデルの場合
         detailed_tokens = tokenizer_.encode(detailed_prompt)
         print(f"detailed_tokens: {len(detailed_tokens)}")
         simple_tokens = tokenizer_.encode(simple_prompt)
         print(f"simple_tokens: {len(simple_tokens)}")
     else:
-        # llama-cppの場合
+        # llama_cpp対応モデルの場合
         detailed_tokens = model_.tokenize(detailed_prompt.encode("utf-8"))
         print(f"detailed_tokens: {len(detailed_tokens)}")
         simple_tokens = model_.tokenize(simple_prompt.encode("utf-8"))
@@ -100,7 +100,7 @@ def generate_design_detail(design_summary: str) -> str:
     start = time.time()
     print("=== 推論開始 ===")
     if tokenizer:
-        # transformersのモデルを使用する場合
+        # Transformers対応モデルを使用する場合
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         print(f"トークナイズ完了: {time.time() - start:.2f}秒")
         outputs = model.generate(**inputs, max_new_tokens=max_tokens)
@@ -109,7 +109,7 @@ def generate_design_detail(design_summary: str) -> str:
         design_detail = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
         print(f"デコード完了: {time.time() - start:.2f}秒")
     else:
-        # llama_cppのモデルを使用する場合
+        # llama_cpp対応モデルを使用する場合
         outputs = model(prompt, max_tokens=max_tokens)
         print(f"モデル推論完了: {time.time() - start:.2f}秒")
         design_detail = outputs["choices"][0]["text"]
