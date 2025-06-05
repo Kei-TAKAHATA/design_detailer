@@ -7,6 +7,7 @@ from llama_cpp import Llama
 print("=== モデルロード開始 ===")
 context_window = None
 model_id = None
+model_path = None
 
 model_name = "elyza"
 model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
@@ -19,6 +20,7 @@ model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_name = "deepseek"
 # model_path = "models/deepseek/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf"
 
+# model_name = "deepseek"
 # model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
 
 # 厳しい
@@ -73,6 +75,11 @@ try:
             device_map=device,
             trust_remote_code=True,
         )
+        max_ctx = tokenizer.model_max_length
+        # context_windowが大きすぎるとメモリーオーバーになるので4096に制限
+        context_window = min(max_ctx, 4096)
+        print(f"max_ctx: {max_ctx}")
+        print(f"context_window: {context_window}")
     elif model_path:
         # llama_cppのモデルを使用する場合
         tokenizer = None  # llama-cpp-pythonは独自のトークナイザーを内包
