@@ -5,9 +5,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from llama_cpp import Llama
 
 print("=== モデルロード開始 ===")
-context_window = None
-model_id = None
-model_path = None
+model_id = None  # Transformers対応モデルを使用する場合に指定
+model_path = None  # llama_cpp対応モデルを使用する場合に指定
 
 model_name = "elyza"
 model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
@@ -94,7 +93,8 @@ try:
         # 2. 最大値を取得（バージョンによって属性名が違う場合あり）
         # 属性がn_ctx_trainの場合、n_ctxの場合、どちらもない場合があるので、全ての場合に対応できるようにする。
         max_ctx = int(tmp_model.metadata.get("llama.context_length", 2048))
-        del tmp_model  # 3. メモリ節約のため破棄
+        # 3. メモリ節約のため破棄
+        del tmp_model
 
         # 4. 最大値で再度ロード
         model = Llama(model_path=model_path, n_ctx=max_ctx, n_gpu_layers=32)
@@ -102,7 +102,6 @@ try:
         context_window = min(max_ctx, 4096)
         print(f"max_ctx: {max_ctx}")
         print(f"context_window: {context_window}")
-        # model = Llama(model_path=model_path, n_ctx=2048, n_gpu_layers=32)
     else:
         raise ValueError("model_id または model_path を指定してください")
 except Exception as e:
