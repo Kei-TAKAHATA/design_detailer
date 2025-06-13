@@ -8,8 +8,8 @@ print("=== モデルロード開始 ===")
 model_id = None  # Transformers対応モデルを使用する場合に指定
 model_path = None  # llama_cpp対応モデルを使用する場合に指定
 
-model_name = "elyza"
-model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
+# model_name = "elyza"
+# model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 
 # 普通
 # model_name = "rakuten"
@@ -31,8 +31,8 @@ model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_path = "models/elyza/Llama-3-ELYZA-JP-8B-q4_k_m.gguf"
 # model_path = "models/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf"
 
-# model_name = "swallow_ms"
-# model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL.gguf"
+model_name = "swallow_ms"
+model_path = "models/swallow_ms/tokyotech-llm-Swallow-MS-7b-instruct-v0.1-IQ4_NL.gguf"
 
 # トークン数不足
 # model_name = "cyberagent"
